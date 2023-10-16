@@ -4,7 +4,7 @@ import JoinUsCard from './JoinUsCard';
 const JoinUsSection = () => {
   return (
     <div>
-        <h1 className='font-bold text-[65px] text-center'>Want to  Join Us?</h1>
+        <h1 className='font-bold text-[65px] text-center'>Want to <span className='color-text'>Join</span> Us?</h1>
         <p className="font-semibold text-slate-500 text-center">To remain with us, it is essential that you diligently follow the steps provided</p>    
            
             <div className="mt-20">

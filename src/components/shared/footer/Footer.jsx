@@ -9,8 +9,8 @@ import { Link } from "react-router-dom";
 
 const Footer = () => {
   return (
-    <div className=" text-white ">
-      <div className="h-[341px] bg-gradient-to-r from-[#0076CE] to-[#9400D3]">
+    <div className=" text-white">
+      <div className="h-[341px] bg-gradient-to-r from-[#0076CE] to-[#9400D3] py-10">
         <div className="lg:w-[1280px] mx-auto">
           <div className="flex justify-between">
             <div>
@@ -36,7 +36,7 @@ const Footer = () => {
             </div>
      
 
-          <hr className="h-[2px]" />
+          <hr className="h-[2px] my-5" />
           <div className="flex justify-between">
             <p className="font-normal text-sm text-white">
               Sambhaji Nagar, No2, St. Antony Road, Chembur, Mumbai - 400071,

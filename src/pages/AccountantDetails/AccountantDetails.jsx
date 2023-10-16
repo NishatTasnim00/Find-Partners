@@ -1,5 +1,6 @@
 import { useLoaderData } from "react-router-dom";
 import { FaStar } from "react-icons/fa";
+import Recommendation from "../../components/recommendation/Recommendation";
 const AccountantDetails = () => {
   const data = useLoaderData();
   console.log(data);
@@ -10,16 +11,16 @@ const AccountantDetails = () => {
     price,
     rating,
     reviewCount,
-
     testimonial,
     deliveryTime,
     about,
   } = data;
+  console.log(about?.services);
   return (
     <div className="main-container bg-[#FAFBFC]">
-      <div className="lg:w-[1280px] mx-auto grid lg:grid-cols-2 grid-cols-1 lg:pt-20 pt-5 px-8 lg:px-0">
-        <div>
-          <div className="flex flex-col gap-y-2 pr-5">
+      <div className="lg:w-[1280px] mx-auto lg:flex justify-between lg:pt-40 pt-5 px-8 lg:px-0">
+        <div className="lg:w-[515px]">
+          <div className="flex flex-col gap-y-2">
             <p className="lg:text-4xl text-2xl font-bold">{name}</p>
             <p className="text-xl font-normal">{intro}</p>
           </div>
@@ -29,9 +30,9 @@ const AccountantDetails = () => {
             <p className="text-sky-700">{rating}</p>
             <p>({reviewCount})</p>
           </div>
-          <div className="shadow-xl shadow-gray-300 text-xl px-12 py-8 mt-3 mx-left mr-20  rounded-[20px]">
+          <div className="shadow-xl shadow-gray-300 text-xl px-12 py-8 mt-3 mx-left   rounded-[20px]">
             <p className="flex justify-between">
-            Basic to complex tasks
+              Basic to complex tasks
               <span className="font-bold">{price}</span>
             </p>
             <p className="mt-6">{deliveryTime}</p>
@@ -45,7 +46,7 @@ const AccountantDetails = () => {
               </button>
             </div>
           </div>
-          <div className="shadow-xl shadow-gray-300 text-xl px-12 py-8 mt-10 mx-left mr-20  rounded-[20px]">
+          <div className="shadow-xl shadow-gray-300 text-xl px-12 py-8 mt-10 mx-left rounded-[20px]">
             <p className="lg:text-4xl font-bold">What people say</p>
             <p className="text-xl font-normal  mt-8">{testimonial?.text}</p>
             <div className="flex justify-center">
@@ -59,51 +60,68 @@ const AccountantDetails = () => {
           </div>
         </div>
         {/*  */}
-        <div>
+        <div className="lg:w-[733px]">
           <div className="mt-14 lg:mt-0">
-            <img src={image} alt="" className="rounded-[20px]" />
+            <figure className="lg:w-[733px] lg:h-[412px] rounded-[20px] lg:mb-40">
+              <img src={image} alt={`${name}`} className="rounded-[20px]" />
+            </figure>
 
-            <div className="mt-5">
+            <div>
               <p className="lg:text-4xl font-bold">About {name}</p>
-            </div>
-            <div className="grid lg:grid-cols-3 grid-cols-1 font-bold mt-10">
-              <div className="flex flex-col gap-y-4">
-                <p className="text-slate-400">FROM</p>
-                <p>{about?.from}</p>
-              </div>
-              {/*  */}
-              <div className="flex flex-col gap-y-4">
-                <p className="text-slate-400">PARTNER SINCE</p>
-                <p>{about?.partnerSince}</p>
-              </div>
-              {/*  */}
-              <div className="flex flex-col gap-y-4">
-                <p className="text-slate-400">AVERAGE RESPONSE TIME</p>
-                <p>{about?.averageResponseTime}</p>
-              </div>
-            </div>
-            <div className="lg:mt-20">
-              <p className="text-slate-400 font-bold">About</p>
-              <p className="text-xl font-semibold mt-2">
-                {about?.description}. {intro}
-              </p>
-            </div>
-            <div className="lg:mt-20 ">
-              <div className="grid lg:grid-cols-2 grid-cols-1">
-                <div className="text-xl font-semibold mt-2 ">
-                  <p className="text-slate-400 font-bold">Services</p>
-                  <div className="mt-5">
-                    {about?.services.map((service) => {
-                      <h3>{service}</h3>;
-                    })}
-                  </div>
+
+              <div className="grid lg:grid-cols-3 grid-cols-1 mt-10">
+                <div className="flex flex-col gap-y-4">
+                  <p className="text-[#999999] text-base font-bold">FROM</p>
+                  <p>{about?.from}</p>
                 </div>
-                <div className="text-xl font-semibold mt-2">
-                  <p className="text-slate-400 font-bold">Why Me</p>
-                  <div className="mt-5">
-                    {about?.benefits.map((benefit) => {
-                      <li>{benefit}</li>;
-                    })}
+                {/*  */}
+                <div className="flex flex-col gap-y-4">
+                  <p className="text-[#999999] text-base font-bold">
+                    PARTNER SINCE
+                  </p>
+                  <p>{about?.partnerSince}</p>
+                </div>
+                {/*  */}
+                <div className="flex flex-col gap-y-4">
+                  <p className="text-[#999999] text-base font-bold">
+                    AVERAGE RESPONSE TIME
+                  </p>
+                  <p>{about?.averageResponseTime}</p>
+                </div>
+              </div>
+              <div className="lg:mt-20">
+                <p className="text-[#999999] text-base font-bold">ABOUT</p>
+                <p className="text-xl font-semibold mt-2">
+                  {about?.description}. {intro}
+                </p>
+              </div>
+              <div className="lg:mt-10 ">
+                <div className="grid lg:grid-cols-2 grid-cols-1">
+                  <div className="text-xl font-semibold mt-2 ">
+                    <p className="text-[#999999] text-base font-bold">
+                      SERVICES
+                    </p>
+                    <div className="mt-3">
+                      <ul className="list-disc text-xl ml-5">
+                        {about?.services.map((service, index) => (
+                          <li key={index}>
+                            <h3>{service}</h3>
+                          </li>
+                        ))}
+                      </ul>
+                    </div>
+                  </div>
+                  <div className="text-xl font-semibold mt-2">
+                    <p className="text-[#999999] text-base font-bold">WHY ME</p>
+                    <div className="mt-3">
+                      <ul className="list-disc text-xl ml-5">
+                        {about?.benefits.map((benefit, index) => (
+                          <li key={index}>
+                            <h3>{benefit}</h3>
+                          </li>
+                        ))}
+                      </ul>
+                    </div>
                   </div>
                 </div>
               </div>
@@ -112,7 +130,10 @@ const AccountantDetails = () => {
         </div>
       </div>
 
-      <div>{/* <Recomandate/> */}</div>
+      <div>
+        {" "}
+        <Recommendation id={data.id} />{" "}
+      </div>
     </div>
   );
 };

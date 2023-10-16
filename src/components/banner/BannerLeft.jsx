@@ -9,7 +9,7 @@ const BannerLeft = () => {
   const [searchResults, setSearchResults] = useState([]);
 
   useEffect(() => {
-    axios.get('http://localhost:5000/charteredAccountants')
+    axios.get('https://find-partners-server-rho.vercel.app/charteredAccountants')
       .then(response => {
         console.log(response.data);
         setAccountants(response.data);
@@ -20,9 +20,8 @@ const BannerLeft = () => {
   }, []);
 
   useEffect(() => {
-    // Filter accountants based on the search term
     if (searchTerm.trim() === '') {
-      setSearchResults([]); // Set searchResults to an empty array if searchTerm is empty
+      setSearchResults([]); 
     } else {
       const results = accountants.filter(accountant =>
         accountant.name.toLowerCase().includes(searchTerm.toLowerCase())
@@ -36,7 +35,7 @@ const BannerLeft = () => {
 
   return (
     <div className='pl-32 pr-5'>
-      <h1 className='font-bold text-[65px]'>Find Partners (CAs) available online</h1>
+      <h1 className='font-bold text-[65px]'>Find <span className='color-text'>Partners</span> (CAs) available online</h1>
       <p className='text-[#616161] font-bold text-xl pb-5'>CONNECT with us where your services are listed and visible to a myriad of businesses seeking CA’s for compliance support</p>
       <div className='relative text-lg font-bold'>
         <input
@@ -52,7 +51,7 @@ const BannerLeft = () => {
       <ul>
         {searchResults?.map(accountant => (
           <Link to={`/AccountantDetails/${accountant?.id}`}>
-          <li key={accountant.id}>{accountant?.name}</li></Link>
+          <li key={accountant._id}>{accountant?.name}</li></Link>
         ))}
       </ul>
     </div>

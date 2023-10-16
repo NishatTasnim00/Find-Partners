@@ -7,6 +7,21 @@
 .main-container{
   @apply lg:w-[1536px]
 }
+
+@layer utilities{
+  .color-text{
+    @apply  bg-gradient-to-r from-[#0076CE] to-[#9400D3] bg-clip-text text-transparent font-black pb-5 
+  }
+}
+
+
 .fee{
   @apply font-bold text-base underline
 }
+
+.pink-comment{
+ @apply bg-[#EFD9F9] rounded-br-[3px] rounded-[15px] px-4 py-2
+}
+.sky-comment{
+  @apply bg-[#DDF3FF] rounded-bl-[3px] rounded-[15px] px-4 py-2
+ }

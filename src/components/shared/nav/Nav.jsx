@@ -3,7 +3,7 @@ import logo from "../../../assets/nav/logo.png";
 const Nav = () => {
   return (
     <div className="main-container lg:h-[85px] bg-transparent">
-      <div className="lg:w-[1280px] mx-auto">
+      <div className="lg:w-[1280px] mx-auto pt-7">
         <div className="flex justify-between align-middle">
           <div className="lg:w-7/12 flex justify-between align-middle">
             <img src={logo} alt="" height={45} width={138} />
